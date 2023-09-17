@@ -31,6 +31,10 @@ class DocumentCnpjService
      */
     private function validate(string $cnpj): bool
     {
+        if (strlen($cnpj) <> 14 || (int) $cnpj <= 0) {
+            return false;
+        }
+
         $value = 0;
 
         $value += (int) $cnpj[0] * 5;

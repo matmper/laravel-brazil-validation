@@ -31,7 +31,7 @@ class DocumentCpfService
      */
     private function validate(string $cpf): bool
     {
-        if (preg_match('/(\d)\1{10}/', $cpf)) {
+        if (strlen($cpf) <> 11 || (int) $cpf <= 0) {
             return false;
         }
 
