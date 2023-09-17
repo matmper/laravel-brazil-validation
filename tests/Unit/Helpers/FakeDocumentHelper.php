@@ -57,7 +57,7 @@ class FakeDocumentHelper
         $c8 = random_int(0, 9);
         $c9 = 0;
         $c10 = 0;
-        $c11 =
+        $c11 = 0;
         $c12 = 1;
 
         $d1 = $c12 * 2 + $c11 * 3 + $c10 * 4 + $c9 * 5 + $c8 * 6 + $c7 * 7 + $c6 * 8 + $c5 * 9 + $c4 * 2 + $c3 * 3
