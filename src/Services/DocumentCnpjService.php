@@ -31,7 +31,7 @@ class DocumentCnpjService
      */
     private function validate(string $cnpj): bool
     {
-        if (strlen($cnpj) <> 14 || (int) $cnpj <= 0) {
+        if (strlen($cnpj) <> 14 || substr_count($cnpj, substr($cnpj, 0, 1)) === strlen($cnpj)) {
             return false;
         }
 
