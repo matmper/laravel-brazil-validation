@@ -32,11 +32,14 @@ $ php artisan vendor:publish --provider="Matmper\Providers\ValidationProvider"
 
 # Usage
 
-| Name | Validation | Description |
-|---|---|---|
-| DOCUMENT| document | validate CPF or CNPJ value, ignore non numeric char |
-| - | document:cpf  | validate CPF value, ignore non numeric char |
-| - | document:cpf,mask  | validate CPF value and format (000.000.000-00) |
+| Validation | Description |
+|---|---|
+| cep | validates CEP value, ignore non numeric char |
+| cep:mask | validates CEP value and format (00000-000) |
+| document | validates CPF or CNPJ value, ignore non numeric char  |
+| document:cpf | validates CPF value, ignore non numeric char |
+| document:cpf,mask | validates CPF value and format (000.000.000-00) |
+| not_html | validates that the string does not contain html |
 
 **Example**
 ```php
@@ -45,7 +48,7 @@ $ php artisan vendor:publish --provider="Matmper\Providers\ValidationProvider"
 // 00000000000000       -> true
 // 00.000.000/0000-00   -> true
 return ['document_number' => 'document'];
-return ['document_number' => 'document:cpf|cnpj'];
+return ['document_number' => 'document:cpf.cnpj'];
 
 // 00000000000          -> true
 // 000.000.000-00       -> true
@@ -58,6 +61,10 @@ return ['cpf' => 'document:cpf'];
 // 00000000000000       -> false
 // 00.000.000/0000-00   -> true
 return ['cnpj' => 'document:cnpj,mask'];
+
+// hello world          -> true
+// <p>hello world</p>   -> false
+return ['content' => 'string|not_html'];
 ```
 
 | laravel-brazil-validation version | Laravel versions |

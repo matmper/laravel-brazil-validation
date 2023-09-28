@@ -50,9 +50,9 @@ class DocumentNumberRuleTest extends TestCase
     public function testDocumentNumberDataProvider(): array
     {
         return [
-            'cpf_cnpj_true_cpf' => ['cpf|cnpj', 'value', FakeDocumentHelper::cpf(), true],
-            'cpf_cnpj_true_cnpj' => ['cpf|cnpj', 'value', FakeDocumentHelper::cnpj(), true],
-            'cpf_cnpj_false' => ['cpf|cnpj', 'value', fake()->word(), false],
+            'cpf_cnpj_true_cpf' => ['cpf.cnpj', 'value', FakeDocumentHelper::cpf(), true],
+            'cpf_cnpj_true_cnpj' => ['cpf.cnpj', 'value', FakeDocumentHelper::cnpj(), true],
+            'cpf_cnpj_false' => ['cpf.cnpj', 'value', fake()->word(), false],
 
             'cpf_true' => ['cpf', 'value', FakeDocumentHelper::cpf(), true],
             'cpf_true_mask' => ['cpf', 'mask', FakeDocumentHelper::cpf(true), true],

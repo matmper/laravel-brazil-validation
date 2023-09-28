@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Http\Response;
 use Throwable;
 
-class InvalidValidationParameterException extends Exception
+class ValueIsNotStringException extends Exception
 {
     /**
      * @param string|null $message
@@ -17,10 +17,10 @@ class InvalidValidationParameterException extends Exception
      */
     public function __construct(
         string $message = null,
-        int $code = Response::HTTP_NOT_ACCEPTABLE,
+        int $code = Response::HTTP_BAD_REQUEST,
         Throwable $previous = null,
     ) {
-        $message = "Validation parameter is invalid: {$message}";
+        $message = "Parameter value is not a valid string: {$message}";
 
         parent::__construct($message, $code, $previous);
     }

@@ -31,7 +31,7 @@ class DocumentCpfService
      */
     private function validate(string $cpf): bool
     {
-        if (strlen($cpf) <> 11 || (int) $cpf <= 0) {
+        if (strlen($cpf) <> 11 || substr_count($cpf, substr($cpf, 0, 1)) === strlen($cpf)) {
             return false;
         }
 

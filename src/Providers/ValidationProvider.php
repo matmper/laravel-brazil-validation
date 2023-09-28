@@ -21,7 +21,9 @@ class ValidationProvider extends ServiceProvider
     public function boot(): void
     {
         $services = [
+            'cep' => \Matmper\Rules\CepRule::class,
             'document' => \Matmper\Rules\DocumentNumberRule::class,
+            'not_html' => \Matmper\Rules\NotHtmlRule::class,
         ];
 
         foreach ($services as $name => $service) {
