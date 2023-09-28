@@ -9,16 +9,30 @@ class CepRuleTest extends TestCase
 {
     /**
      * @test
+     * @dataProvider testCepDataProvider
      */
-    public function test_cep_request(): void
+    public function test_cep_request(string $cep, int $assertStatus): void
     {
         $response = $this->post('test', [
-            'document' => FakeCepHelper::cep(false),
+            'cep' => $cep,
             'rules' => [
-                'cep' => ['cep'],
+                'cep' => 'cep',
             ],
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus($assertStatus);
+    }
+
+    /**
+     * Data Provider: test_cep_request
+     *
+     * @return array
+     */
+    public function testCepDataProvider(): array
+    {
+        return [
+            'cep_success' => [FakeCepHelper::cep(), 200],
+            'cep_error' => [FakeCepHelper::cep() . fake()->randomDigit(), 400],
+        ];
     }
 }
