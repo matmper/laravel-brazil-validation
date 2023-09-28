@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Tests;
+namespace Tests\Unit;
 
 use Tests\Helpers\FakeCepHelper;
+use Tests\TestCase;
 
 class CepRuleTest extends TestCase
 {
