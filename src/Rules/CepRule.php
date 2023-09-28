@@ -34,15 +34,11 @@ class CepRule implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        if ($this->checkMask) {
-            return preg_match('/^\d{5}\-\d{3}/', $value);
+        if ($this->checkMask && !preg_match('/\d{5}\-\d{3}/', $value)) {
+            return false;
         }
 
-        if (in_array(strlen($value), [8, 9])) {
-            return strlen(preg_replace("/[^\d]/", "", $value)) === 8;
-        }
-
-        return false;
+        return strlen(preg_replace("/[^\d]/", "", $value)) === 8;
     }
 
     /**
