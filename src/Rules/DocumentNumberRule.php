@@ -28,7 +28,7 @@ class DocumentNumberRule implements Rule
      */
     public function params(array $params): self
     {
-        $this->setDocuments($params[0] ?? 'cpf|cnpj');
+        $this->setDocuments($params[0] ?? 'cpf.cnpj');
         $this->setMask($params[1] ?? 'value');
 
         return $this;
@@ -71,12 +71,12 @@ class DocumentNumberRule implements Rule
     /**
      * Validate document list and set in $this->documents
      *
-     * @param string $documents cpf|cnpj
+     * @param string $documents cpf.cnpj
      * @return void
      */
     private function setDocuments(string $documents): void
     {
-        $this->documents = explode('|', $documents);
+        $this->documents = explode('.', $documents);
 
         $validDocumentTypes = [DocumentType::CPF, DocumentType::CNPJ];
 

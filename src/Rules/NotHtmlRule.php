@@ -25,7 +25,13 @@ class NotHtmlRule implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        // if is html, return false
+        if (!is_string($value)) {
+            throw new \Matmper\Exceptions\ValueIsNotStringException($attribute);
+        }
+
+        if (preg_match('/<\s?[^\>]*\/?\s?>/i', $value)) {
+            return false;
+        }
 
         return true;
     }
