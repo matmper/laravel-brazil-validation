@@ -9,7 +9,7 @@ class NotHtmlRuleTest extends TestCase
     /**
      * @test
      */
-    public function test_not_html_request(): void
+    public function testNotHtmlRequest(): void
     {
         $response = $this->post('test', [
             'document' => fake()->text(),

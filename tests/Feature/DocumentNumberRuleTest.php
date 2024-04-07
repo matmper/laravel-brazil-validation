@@ -10,7 +10,7 @@ class DocumentNumberRuleTest extends TestCase
     /**
      * @test
      */
-    public function test_invalid_validation_parameter_exception(): void
+    public function testInvalidValidationParameterException(): void
     {
         $response = $this->post('test', [
             'document' => FakeDocumentHelper::cnpj(false),

@@ -11,7 +11,7 @@ class CepRuleTest extends TestCase
      * @test
      * @dataProvider testCepDataProvider
      */
-    public function test_cep_request(string $cep, int $assertStatus): void
+    public function testCepRequest(string $cep, int $assertStatus): void
     {
         $response = $this->post('test', [
             'cep' => $cep,
@@ -24,7 +24,7 @@ class CepRuleTest extends TestCase
     }
 
     /**
-     * Data Provider: test_cep_request
+     * Data Provider: testCepRequest
      *
      * @return array
      */
