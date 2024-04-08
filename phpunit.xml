@@ -15,9 +15,11 @@
 >
   <coverage/>
   <testsuites>
-    <testsuite name="Application Test Suite">
-      <directory suffix="Test.php">./tests/Unit/</directory>
-      <exclude>./tests/TestCase.php</exclude>
+    <testsuite name="Unit">
+      <directory>tests/Unit</directory>
+    </testsuite>
+    <testsuite name="Feature">
+      <directory>tests/Feature</directory>
     </testsuite>
   </testsuites>
   <logging>

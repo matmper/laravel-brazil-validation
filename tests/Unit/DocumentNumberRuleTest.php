@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Tests;
+namespace Tests\Unit;
 
 use Tests\Helpers\FakeDocumentHelper;
+use Tests\TestCase;
 
 class DocumentNumberRuleTest extends TestCase
 {

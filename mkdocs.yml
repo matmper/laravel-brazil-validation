@@ -1,0 +1,11 @@
+site_name: "Laravel Brazil - Validation"
+site_url: https://github.com/matmper/laravel-brazil-validation
+nav:
+  - Início: index.md
+  - Validações:
+    - Conteúdo: validations/content.md
+    - Documentos: validations/documents.md
+    - Endereço: validations/address.md
+theme:
+  name: readthedocs
+  include_sidebar: true

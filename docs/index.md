@@ -1,6 +1,6 @@
 # Laravel Brazil Validation 🇧🇷
 
-Composer package for request brazilian field validation for Laravel
+Pacote Composer para Laravel - Validação de campos e valores brasileiro
 
 <p align="center">
     <a href="https://github.com/matmper/laravel-brazil-validation/pulls">
@@ -14,40 +14,33 @@ Composer package for request brazilian field validation for Laravel
     </a>
 </p>
 
-# Dependences
+# Dependências
 
 - PHP >= 8.0.2 ([Doc](https://www.php.net/releases/8.0/pt_BR.php))
 - Laravel >= 9 ([Doc](https://laravel.com/docs/9.x/releases))
 - Composer ([Doc](https://getcomposer.org/))
 
-# Install
+# Instalação
 
-Install composer package and publish:
+Instale o pacote em sua aplicação e publique para utilização:
 
 ```bash
-# install package
+# Instale a dependência
 $ composer require matmper/laravel-brazil-validation
 
-# publish package
+# Publique o pacote em sua aplicação
 $ php artisan vendor:publish --provider="Matmper\Providers\ValidationProvider"
 ```
 
-# Documentation
+# Utilização
 
-| laravel-brazil-validation version | Laravel versions |
-|---|---|
-| 1.x  | 9 / 10 / 11 |
+A partir do momento que o pacote se encontra publicado, a utilização é padrão a qualquer validação já existente no
+Laravel, utilizando o recurso de `validate` informando os valores e parâmetros.
 
-Access: [Complete Documentation](https://matmper.github.io/laravel-brazil-validation)
-
-## Contribution & Development
-
-This is an open source code, free for distribution and contribution.
-All contributions will be accepted only with Pull Request and that pass the test and code standardization.
-
-Run composer install in yout development env:
-```bash
-$ composer install --dev --prefer-dist
+```php
+$request->validate([
+    'user_document_number' => 'document:cnpj,mask',
+]);
 ```
 
-Now you can use `composer check` in your terminal.
+Mais detalhes na documentação oficial: [Laravel Validation](https://laravel.com/docs/11.x/validation)
