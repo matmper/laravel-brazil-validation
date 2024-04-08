@@ -1,13 +1,19 @@
-# Documentos (CPF e CNPJ)
+# Conteúdo
 
-| Validação | Descrição |
-|---|---|
-| not_html | valida que uma string não contenha html |
+A validação de conteúdo realiza validações regex de conteúdos permitidos ou bloqueados dentro de uma string válida.
 
-## Exemplos:
+## Not HTML
+
+| Tipo | Valor | Descricao |
+|---|---|---|
+| Nome | not_html | Bloqueia o uso de tag HTML no conteúdo |
+
+**Exemplos:**
 
 ```php
-// hello world          -> true
-// <p>hello world</p>   -> false
-return ['content' => 'string|not_html'];
+$request->validate(['content'  =>  'not_html']);
 ```
+| - | Valor de entrada (Input) |
+|-|-|
+| ✔️ | `hello world` |
+| ❌ | `<p>hello world</p>` |

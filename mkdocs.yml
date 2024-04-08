@@ -3,9 +3,9 @@ site_url: https://github.com/matmper/laravel-brazil-validation
 nav:
   - Início: index.md
   - Validações:
-    - CEP (Endereço): validations/cep.md
-    - Conteúdo (HTML): validations/content.md
-    - Documentos (CPF e CNPJ): validations/documents.md
+    - Conteúdo: validations/content.md
+    - Documentos: validations/documents.md
+    - Endereço: validations/address.md
 theme:
   name: readthedocs
   locale: pt

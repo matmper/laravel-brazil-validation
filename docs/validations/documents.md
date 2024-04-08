@@ -1,29 +1,65 @@
-# Documentos (CPF e CNPJ)
+# Conteúdo
 
-| Validação | Descrição |
-|---|---|
-| document | valida o valor de CPF ou CNPJ, ignorando valores não numéricos  |
-| document:cpf | validar o valor de um CPF, ignorando valores não numéricos |
-| document:cpf,mask | valida o valor e o formato de um CPF (000.000.000-00) |
+A validação de conteúdo realiza validações regex de conteúdos permitidos ou bloqueados dentro de uma string válida.
 
-**Example**
+## CPF & CNPJ
+
+| Tipo | Valor | Descricao |
+|---|---|---|
+| Nome | document_number | Validação de CPF ou CNPJ |
+| Parâmetro | cpf | Garante que o valor seja um CPF |
+| Parâmetro | cnpj | Garante que o valor seja um CNPJ |
+| Parâmetro | mask | Garante que o valor seja formatado |
+
+**Importante:** *a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, porém não é realizado nenhuma verificação com banco de dados governamentais para garantir a existência e o uso deste documento.*
+
+**Exemplos:**
+
 ```php
-// 00000000000          -> true
-// 000.000.000-00       -> true
-// 00000000000000       -> true
-// 00.000.000/0000-00   -> true
-return ['document_number' => 'document'];
-return ['document_number' => 'document:cpf.cnpj'];
-
-// 00000000000          -> true
-// 000.000.000-00       -> true
-// 00000000000000       -> false
-// 00.000.000/0000-00   -> false
-return ['cpf' => 'document:cpf'];
-
-// 00000000000          -> false
-// 000.000.000-00       -> false
-// 00000000000000       -> false
-// 00.000.000/0000-00   -> true
-return ['cnpj' => 'document:cnpj,mask'];
+$request->validate(['document_number' => 'document']);
+$request->validate(['document_number' => 'document:cpf.cnpj']);
 ```
+| - | Valor de entrada (Input) |
+|-|-|
+| ✔️ | 00011122299 |
+| ✔️ | 000.111.222-99 |
+| ✔️ | 00111222000199 |
+| ✔️ | 00.111.222/0001-99 |
+
+---
+
+```php
+$request->validate(['cpf' => 'document:cpf']);
+```
+| - | Valor de entrada (Input) |
+|-|-|
+| ✔️ | 000.111.222-99 |
+| ✔️ | 00011122299 |
+
+---
+
+```php
+$request->validate(['cpf' => 'document:cpf,mask']);
+```
+| - | Valor de entrada (Input) |
+|-|-|
+| ✔️ | 000.111.222-99 |
+
+---
+
+```php
+$request->validate(['cnpj' => 'document:cpf']);
+```
+| - | Valor de entrada (Input) |
+|-|-|
+| ✔️ | 00.111.222/0001-99 |
+| ✔️ | 00111222000199 |
+
+---
+
+```php
+$request->validate(['cnpj' => 'document:cpf:mask']);
+```
+| - | Valor de entrada (Input) |
+|-|-|
+| ✔️ | 00.111.222/0001-99 |
