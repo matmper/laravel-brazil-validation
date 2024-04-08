@@ -48,7 +48,7 @@ $request->validate(['cpf' => 'document:cpf,mask']);
 ---
 
 ```php
-$request->validate(['cnpj' => 'document:cpf']);
+$request->validate(['cnpj' => 'document:cnpj']);
 ```
 | - | Valor de entrada (Input) |
 |-|-|
@@ -58,7 +58,7 @@ $request->validate(['cnpj' => 'document:cpf']);
 ---
 
 ```php
-$request->validate(['cnpj' => 'document:cpf:mask']);
+$request->validate(['cnpj' => 'document:cnpj:mask']);
 ```
 | - | Valor de entrada (Input) |
 |-|-|
