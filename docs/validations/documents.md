@@ -1,6 +1,8 @@
-# Conteúdo
+# Documentos
 
-A validação de conteúdo realiza validações regex de conteúdos permitidos ou bloqueados dentro de uma string válida.
+Validação dos principais tipo de documentos e seus formatos encontrados em território brasileiro.
+
+**Importante:** *a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, não é realizado verificações com banco de dados governamentais ou oficiais para garantir a existência e o uso deste documento.*
 
 ## CPF & CNPJ
 
@@ -10,8 +12,6 @@ A validação de conteúdo realiza validações regex de conteúdos permitidos o
 | Parâmetro | cpf | Garante que o valor seja um CPF |
 | Parâmetro | cnpj | Garante que o valor seja um CNPJ |
 | Parâmetro | mask | Garante que o valor seja formatado |
-
-**Importante:** *a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, porém não é realizado nenhuma verificação com banco de dados governamentais para garantir a existência e o uso deste documento.*
 
 **Exemplos:**
 
