@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="pt" >
+<html class="writer-html5" lang="en" >
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,8 +80,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="conteudo">Conteúdo</h1>
-<p>A validação de conteúdo realiza validações regex de conteúdos permitidos ou bloqueados dentro de uma string válida.</p>
+                <h1 id="documentos">Documentos</h1>
+<p>Validação dos principais tipo de documentos e seus formatos encontrados em território brasileiro.</p>
+<p><strong>Importante:</strong> <em>a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, não é realizado verificações com banco de dados governamentais ou oficiais para garantir a existência e o uso deste documento.</em></p>
 <h2 id="cpf-cnpj">CPF &amp; CNPJ</h2>
 <table>
 <thead>
@@ -114,7 +115,6 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Importante:</strong> <em>a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, porém não é realizado nenhuma verificação com banco de dados governamentais para garantir a existência e o uso deste documento.</em></p>
 <p><strong>Exemplos:</strong></p>
 <pre><code class="language-php">$request-&gt;validate(['document_number' =&gt; 'document']);
 $request-&gt;validate(['document_number' =&gt; 'document:cpf.cnpj']);
