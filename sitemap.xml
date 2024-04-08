@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://github.com/matmper/laravel-brazil-validation/</loc>
-         <lastmod>2024-04-07</lastmod>
+         <lastmod>2024-04-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/matmper/laravel-brazil-validation/validations/cep/</loc>
-         <lastmod>2024-04-07</lastmod>
+         <loc>https://github.com/matmper/laravel-brazil-validation/validations/address/</loc>
+         <lastmod>2024-04-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/matmper/laravel-brazil-validation/validations/content/</loc>
-         <lastmod>2024-04-07</lastmod>
+         <lastmod>2024-04-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/matmper/laravel-brazil-validation/validations/documents/</loc>
-         <lastmod>2024-04-07</lastmod>
+         <lastmod>2024-04-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

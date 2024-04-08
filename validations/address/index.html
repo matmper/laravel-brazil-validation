@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/matmper/laravel-brazil-validation/validations/cep/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/matmper/laravel-brazil-validation/validations/address/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>CEP (Endereço) - Laravel Brazil - Validation</title>
+    <title>Endereço - Laravel Brazil - Validation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "CEP (Endere\u00e7o)";
-        var mkdocs_page_input_path = "validations/cep.md";
-        var mkdocs_page_url = "/matmper/laravel-brazil-validation/validations/cep/";
+        var mkdocs_page_name = "Endere\u00e7o";
+        var mkdocs_page_input_path = "validations/address.md";
+        var mkdocs_page_url = "/matmper/laravel-brazil-validation/validations/address/";
       </script>
     
     <!--[if lt IE 9]>
@@ -45,13 +45,15 @@
               </ul>
               <p class="caption"><span class="caption-text">Validações</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">CEP (Endereço)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../content/">Conteúdo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documents/">Documentos</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Endereço</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#cep">CEP</a>
+    </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../content/">Conteúdo (HTML)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../documents/">Documentos (CPF e CNPJ)</a>
                   </li>
               </ul>
       </div>
@@ -69,7 +71,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Validações</li>
-      <li class="breadcrumb-item active">CEP (Endereço)</li>
+      <li class="breadcrumb-item active">Endereço</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -78,55 +80,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="documentos-cpf-e-cnpj">Documentos (CPF e CNPJ)</h1>
+                <h1 id="endereco">Endereço</h1>
+<p>A validação de endereço permite o complemento de dados válidos e completos de localização.</p>
+<h2 id="cep">CEP</h2>
 <table>
 <thead>
 <tr>
-<th>Validação</th>
-<th>Descrição</th>
+<th>Tipo</th>
+<th>Valor</th>
+<th>Descricao</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Nome</td>
 <td>cep</td>
-<td>valida o valor de um CEP, ignorando valores não numéricos</td>
+<td>Validação de CEP</td>
 </tr>
 <tr>
-<td>cep:mask</td>
-<td>validates CEP value and format (00000-000)</td>
+<td>Parâmetro</td>
+<td>mask</td>
+<td>Garante que o valor seja formatado</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Example</strong></p>
-<pre><code class="language-php">// 00000000000          -&gt; true
-// 000.000.000-00       -&gt; true
-// 00000000000000       -&gt; true
-// 00.000.000/0000-00   -&gt; true
-return ['document_number' =&gt; 'document'];
-return ['document_number' =&gt; 'document:cpf.cnpj'];
-
-// 00000000000          -&gt; true
-// 000.000.000-00       -&gt; true
-// 00000000000000       -&gt; false
-// 00.000.000/0000-00   -&gt; false
-return ['cpf' =&gt; 'document:cpf'];
-
-// 00000000000          -&gt; false
-// 000.000.000-00       -&gt; false
-// 00000000000000       -&gt; false
-// 00.000.000/0000-00   -&gt; true
-return ['cnpj' =&gt; 'document:cnpj,mask'];
-
-// hello world          -&gt; true
-// &lt;p&gt;hello world&lt;/p&gt;   -&gt; false
-return ['content' =&gt; 'string|not_html'];
+<p><strong>Exemplos:</strong></p>
+<pre><code class="language-php">$request-&gt;validate(['content' =&gt; 'cep']);
 </code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td>10000200</td>
+</tr>
+<tr>
+<td>✔️</td>
+<td>10000-200</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-php">$request-&gt;validate(['content' =&gt; 'cep:mask']);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td>10000-200</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../.." class="btn btn-neutral float-left" title="Início"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../content/" class="btn btn-neutral float-right" title="Conteúdo (HTML)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../documents/" class="btn btn-neutral float-left" title="Documentos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -149,10 +168,8 @@ return ['content' =&gt; 'string|not_html'];
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../documents/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../content/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/matmper/laravel-brazil-validation/validations/content/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Conteúdo (HTML) - Laravel Brazil - Validation</title>
+    <title>Conteúdo - Laravel Brazil - Validation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Conte\u00fado (HTML)";
+        var mkdocs_page_name = "Conte\u00fado";
         var mkdocs_page_input_path = "validations/content.md";
         var mkdocs_page_url = "/matmper/laravel-brazil-validation/validations/content/";
       </script>
@@ -45,15 +45,15 @@
               </ul>
               <p class="caption"><span class="caption-text">Validações</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../cep/">CEP (Endereço)</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Conteúdo (HTML)</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Conteúdo</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#exemplos">Exemplos:</a>
+    <li class="toctree-l2"><a class="reference internal" href="#not-html">Not HTML</a>
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../documents/">Documentos (CPF e CNPJ)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../documents/">Documentos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../address/">Endereço</a>
                   </li>
               </ul>
       </div>
@@ -71,7 +71,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Validações</li>
-      <li class="breadcrumb-item active">Conteúdo (HTML)</li>
+      <li class="breadcrumb-item active">Conteúdo</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -80,32 +80,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="documentos-cpf-e-cnpj">Documentos (CPF e CNPJ)</h1>
+                <h1 id="conteudo">Conteúdo</h1>
+<p>A validação de conteúdo realiza validações regex de conteúdos permitidos ou bloqueados dentro de uma string válida.</p>
+<h2 id="not-html">Not HTML</h2>
 <table>
 <thead>
 <tr>
-<th>Validação</th>
-<th>Descrição</th>
+<th>Tipo</th>
+<th>Valor</th>
+<th>Descricao</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Nome</td>
 <td>not_html</td>
-<td>valida que uma string não contenha html</td>
+<td>Bloqueia o uso de tag HTML no conteúdo</td>
 </tr>
 </tbody>
 </table>
-<h2 id="exemplos">Exemplos:</h2>
-<pre><code class="language-php">// hello world          -&gt; true
-// &lt;p&gt;hello world&lt;/p&gt;   -&gt; false
-return ['content' =&gt; 'string|not_html'];
+<p><strong>Exemplos:</strong></p>
+<pre><code class="language-php">$request-&gt;validate(['content'  =&gt;  'not_html']);
 </code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td><code>hello world</code></td>
+</tr>
+<tr>
+<td>❌</td>
+<td><code>&lt;p&gt;hello world&lt;/p&gt;</code></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../cep/" class="btn btn-neutral float-left" title="CEP (Endereço)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../documents/" class="btn btn-neutral float-right" title="Documentos (CPF e CNPJ)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../.." class="btn btn-neutral float-left" title="Início"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../documents/" class="btn btn-neutral float-right" title="Documentos">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -128,7 +148,7 @@ return ['content' =&gt; 'string|not_html'];
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../cep/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../documents/" style="color: #fcfcfc">Next &raquo;</a></span>

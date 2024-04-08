@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/matmper/laravel-brazil-validation/validations/documents/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Documentos (CPF e CNPJ) - Laravel Brazil - Validation</title>
+    <title>Documentos - Laravel Brazil - Validation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Documentos (CPF e CNPJ)";
+        var mkdocs_page_name = "Documentos";
         var mkdocs_page_input_path = "validations/documents.md";
         var mkdocs_page_url = "/matmper/laravel-brazil-validation/validations/documents/";
       </script>
@@ -45,13 +45,15 @@
               </ul>
               <p class="caption"><span class="caption-text">Validações</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../cep/">CEP (Endereço)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../content/">Conteúdo</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../content/">Conteúdo (HTML)</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Documentos (CPF e CNPJ)</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Documentos</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#cpf-cnpj">CPF &amp; CNPJ</a>
+    </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../address/">Endereço</a>
                   </li>
               </ul>
       </div>
@@ -69,7 +71,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Validações</li>
-      <li class="breadcrumb-item active">Documentos (CPF e CNPJ)</li>
+      <li class="breadcrumb-item active">Documentos</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -78,54 +80,153 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="documentos-cpf-e-cnpj">Documentos (CPF e CNPJ)</h1>
+                <h1 id="conteudo">Conteúdo</h1>
+<p>A validação de conteúdo realiza validações regex de conteúdos permitidos ou bloqueados dentro de uma string válida.</p>
+<h2 id="cpf-cnpj">CPF &amp; CNPJ</h2>
 <table>
 <thead>
 <tr>
-<th>Validação</th>
-<th>Descrição</th>
+<th>Tipo</th>
+<th>Valor</th>
+<th>Descricao</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>document</td>
-<td>valida o valor de CPF ou CNPJ, ignorando valores não numéricos</td>
+<td>Nome</td>
+<td>document_number</td>
+<td>Validação de CPF ou CNPJ</td>
 </tr>
 <tr>
-<td>document:cpf</td>
-<td>validar o valor de um CPF, ignorando valores não numéricos</td>
+<td>Parâmetro</td>
+<td>cpf</td>
+<td>Garante que o valor seja um CPF</td>
 </tr>
 <tr>
-<td>document:cpf,mask</td>
-<td>valida o valor e o formato de um CPF (000.000.000-00)</td>
+<td>Parâmetro</td>
+<td>cnpj</td>
+<td>Garante que o valor seja um CNPJ</td>
+</tr>
+<tr>
+<td>Parâmetro</td>
+<td>mask</td>
+<td>Garante que o valor seja formatado</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Example</strong></p>
-<pre><code class="language-php">// 00000000000          -&gt; true
-// 000.000.000-00       -&gt; true
-// 00000000000000       -&gt; true
-// 00.000.000/0000-00   -&gt; true
-return ['document_number' =&gt; 'document'];
-return ['document_number' =&gt; 'document:cpf.cnpj'];
-
-// 00000000000          -&gt; true
-// 000.000.000-00       -&gt; true
-// 00000000000000       -&gt; false
-// 00.000.000/0000-00   -&gt; false
-return ['cpf' =&gt; 'document:cpf'];
-
-// 00000000000          -&gt; false
-// 000.000.000-00       -&gt; false
-// 00000000000000       -&gt; false
-// 00.000.000/0000-00   -&gt; true
-return ['cnpj' =&gt; 'document:cnpj,mask'];
+<p><strong>Importante:</strong> <em>a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, porém não é realizado nenhuma verificação com banco de dados governamentais para garantir a existência e o uso deste documento.</em></p>
+<p><strong>Exemplos:</strong></p>
+<pre><code class="language-php">$request-&gt;validate(['document_number' =&gt; 'document']);
+$request-&gt;validate(['document_number' =&gt; 'document:cpf.cnpj']);
 </code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td>00011122299</td>
+</tr>
+<tr>
+<td>✔️</td>
+<td>000.111.222-99</td>
+</tr>
+<tr>
+<td>✔️</td>
+<td>00111222000199</td>
+</tr>
+<tr>
+<td>✔️</td>
+<td>00.111.222/0001-99</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<pre><code class="language-php">$request-&gt;validate(['cpf' =&gt; 'document:cpf']);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td>000.111.222-99</td>
+</tr>
+<tr>
+<td>✔️</td>
+<td>00011122299</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<pre><code class="language-php">$request-&gt;validate(['cpf' =&gt; 'document:cpf,mask']);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td>000.111.222-99</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<pre><code class="language-php">$request-&gt;validate(['cnpj' =&gt; 'document:cpf']);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td>00.111.222/0001-99</td>
+</tr>
+<tr>
+<td>✔️</td>
+<td>00111222000199</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<pre><code class="language-php">$request-&gt;validate(['cnpj' =&gt; 'document:cpf:mask']);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td>00.111.222/0001-99</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../content/" class="btn btn-neutral float-left" title="Conteúdo (HTML)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../content/" class="btn btn-neutral float-left" title="Conteúdo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../address/" class="btn btn-neutral float-right" title="Endereço">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -150,6 +251,8 @@ return ['cnpj' =&gt; 'document:cnpj,mask'];
     
       <span><a href="../content/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../address/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
