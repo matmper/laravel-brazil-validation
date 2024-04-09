@@ -2,18 +2,15 @@
 
 Composer package for request brazilian field validation for Laravel
 
-<a href="https://github.com/matmper/laravel-brazil-validation/pulls">
+<a href="https://github.com/matmper/laravel-brazil-validation/pulls" target="_blank">>
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge" alt="PRs Welcome">
 </a>
-
-<a href="https://packagist.org/packages/matmper/laravel-brazil-validation">
+<a href="https://packagist.org/packages/matmper/laravel-brazil-validation" target="_blank">>
     <img src="https://img.shields.io/packagist/v/matmper/laravel-brazil-validation?style=for-the-badge&color=%23b6e673" alt="Packagist">
 </a>
-
-<a href="https://github.com/matmper/laravel-brazil-validation/actions/workflows/github_actions.yml?query=branch%3Amain">
+<a href="https://github.com/matmper/laravel-brazil-validation/actions/workflows/github_actions.yml?query=branch%3Amain" target="_blank">>
     <img src="https://img.shields.io/github/actions/workflow/status/matmper/laravel-brazil-validation/github_actions.yml?branch=main&style=for-the-badge" alt="Github Actions">
 </a>
-
 <a href="https://opensource.org/license/mit/" target="_blank">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="License MIT">
 </a>
