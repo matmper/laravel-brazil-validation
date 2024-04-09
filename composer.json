@@ -47,11 +47,17 @@
             "@phpstan",
             "@tests"
         ],
-        "tests": "@php vendor/bin/phpunit -d memory_limit=256M --do-not-cache-result --configuration phpunit.xml",
         "phpcbf": "@php vendor/bin/phpcbf",
         "phpcs": "@php vendor/bin/phpcs",
-        "phpstan": "@php vendor/bin/phpstan analyse --memory-limit 256M",
-        "post-autoload-dump": "@php vendor/bin/testbench package:discover --ansi"
+        "phpstan": "@php vendor/bin/phpstan analyse --level 9 ./src ./tests",
+        "tests": "@php vendor/bin/phpunit -d memory_limit=256M --do-not-cache-result --configuration phpunit.xml",
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "post-install-cmd": [
+            "git config --local core.hooksPath .github/hooks",
+            "chmod +x .github/hooks/*"
+        ]
     },
     "extra": {
         "laravel": {

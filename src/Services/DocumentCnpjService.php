@@ -7,10 +7,10 @@ class DocumentCnpjService
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param  string  $value
      * @return bool
      */
-    public function passes(mixed $value, bool $checkMask): bool
+    public function passes(string $value, bool $checkMask): bool
     {
         $cnpjValue = (string) preg_replace("/[^0-9]/", "", $value);
 

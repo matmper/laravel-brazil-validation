@@ -2,14 +2,12 @@
 
 namespace Matmper\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Matmper\Contracts\RuleContract;
 
-class NotHtmlRule implements Rule
+class NotHtmlRule implements RuleContract
 {
     /**
-     * Set rule params
-     *
-     * @return self
+     * @inheritDoc
      */
     public function params(array $params): self
     {
@@ -19,11 +17,11 @@ class NotHtmlRule implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
+     * @param   string  $attribute
+     * @param   string  $value
+     * @return  bool
      */
-    public function passes($attribute, $value): bool
+    public function passes(string $attribute, mixed $value): bool
     {
         if (!is_string($value)) {
             throw new \Matmper\Exceptions\ValueIsNotStringException($attribute);
@@ -37,11 +35,9 @@ class NotHtmlRule implements Rule
     }
 
     /**
-     * Get the validation error message.
-     *
-     * @return string
+     * @inheritDoc
      */
-    public function message()
+    public function message(): string
     {
         return ':attribute não deve conter código HTML';
     }

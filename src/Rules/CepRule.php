@@ -2,9 +2,9 @@
 
 namespace Matmper\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Matmper\Contracts\RuleContract;
 
-class CepRule implements Rule
+class CepRule implements RuleContract
 {
     /**
      * Set true if check mask and value
@@ -14,9 +14,7 @@ class CepRule implements Rule
     private $checkMask;
 
     /**
-     * Set rule params
-     *
-     * @return self
+     * @inheritDoc
      */
     public function params(array $params): self
     {
@@ -28,25 +26,23 @@ class CepRule implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
+     * @param   string  $attribute
+     * @param   string  $value
+     * @return  bool
      */
-    public function passes($attribute, $value): bool
+    public function passes(string $attribute, mixed $value): bool
     {
         if ($this->checkMask && !preg_match('/\d{5}\-\d{3}/', $value)) {
             return false;
         }
 
-        return strlen(preg_replace("/[^\d]/", "", $value)) === 8;
+        return strlen((string) preg_replace("/[^\d]/", "", $value)) === 8;
     }
 
     /**
-     * Get the validation error message.
-     *
-     * @return string
+     * @inheritDoc
      */
-    public function message()
+    public function message(): string
     {
         return ':attribute não é um CEP válido';
     }
