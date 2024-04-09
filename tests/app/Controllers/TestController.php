@@ -12,17 +12,22 @@ class TestController
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Throwable
      */
     public function index(Request $request): \Illuminate\Http\JsonResponse
     {
         try {
-            $validate = Validator::make($request->except('rules'), $request->rules);
+            $rules = (array) $request->get('rules');
+            $validate = Validator::make($request->except('rules'), $rules);
+
+            /** @var \Illuminate\Contracts\Routing\ResponseFactory $response */
+            $response = response();
 
             if ($validate->fails()) {
-                return response()->json(['errors' => $validate->errors()], 400);
+                return $response->json(['errors' => $validate->errors()], 400);
             }
 
-            return response()->json(['success' => true], 200);
+            return $response->json(['success' => true], 200);
         } catch (\Throwable $th) {
             throw $th;
         }

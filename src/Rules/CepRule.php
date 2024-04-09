@@ -26,11 +26,11 @@ class CepRule implements RuleContract
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  string  $value
-     * @return bool
+     * @param   string  $attribute
+     * @param   string  $value
+     * @return  bool
      */
-    public function passes($attribute, $value): bool
+    public function passes(string $attribute, mixed $value): bool
     {
         if ($this->checkMask && !preg_match('/\d{5}\-\d{3}/', $value)) {
             return false;

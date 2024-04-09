@@ -2,14 +2,15 @@
 
 namespace Tests;
 
-use Illuminate\Foundation\Application;
-
 class TestCase extends \Orchestra\Testbench\TestCase
 {
-    protected $app = null;
+    /**
+     * @var \Illuminate\Foundation\Application;
+     */
+    protected $app;
 
     /**
-     * @param Application $app
+     * @param \Illuminate\Foundation\Application $app
      * @return void
      */
     protected function getEnvironmentSetUp($app): void
@@ -18,6 +19,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $this->app->setBasePath(__DIR__ . '/..');
 
+        /** @var \Illuminate\Support\Facades\Route $router */
         $router = $this->app['router'];
         $router->post('test', "\App\Controllers\TestController@index");
     }
@@ -25,8 +27,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
     /**
      * Load custom package providers
      *
-     * @param Application $app
-     * @return array
+     * @param \Illuminate\Foundation\Application $app
+     * @return array<string>
      */
     protected function getPackageProviders($app): array
     {

@@ -1,10 +1,10 @@
 <?php
 
+/**
+ * Used for overwrite \Illuminate\Contracts\Validation\Rule;
+ */
 namespace Matmper\Contracts;
 
-/**
- * Used to overwrite \Illuminate\Contracts\Validation\Rule;
- */
 interface RuleContract
 {
     /**

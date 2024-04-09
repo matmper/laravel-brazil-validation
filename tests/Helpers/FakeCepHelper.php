@@ -12,7 +12,7 @@ class FakeCepHelper
      */
     public static function cep(bool $mask = false): string
     {
-        $cep = random_int(10000000, 99999999);
+        $cep = (string) random_int(10000000, 99999999);
         return $mask ? MaskHelper::create($cep, '#####-###') : $cep;
     }
 }

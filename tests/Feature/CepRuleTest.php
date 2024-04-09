@@ -26,7 +26,7 @@ class CepRuleTest extends TestCase
     /**
      * Data Provider: testCepRequest
      *
-     * @return array
+     * @return array<string, array<mixed>>
      */
     public function testCepDataProvider(): array
     {

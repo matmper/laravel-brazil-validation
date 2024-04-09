@@ -14,6 +14,7 @@ class DocumentNumberRuleTest extends TestCase
     {
         $this->expectException(\Matmper\Exceptions\InvalidDocumentTypeException::class);
 
+        /** @var \Matmper\Rules\DocumentNumberRule $rule */
         $rule = app(\Matmper\Rules\DocumentNumberRule::class);
         $rule->params(['wrong_document', 'value']);
     }
@@ -25,6 +26,7 @@ class DocumentNumberRuleTest extends TestCase
     {
         $this->expectException(\Matmper\Exceptions\InvalidValidationParameterException::class);
 
+        /** @var \Matmper\Rules\DocumentNumberRule $rule */
         $rule = app(\Matmper\Rules\DocumentNumberRule::class);
         $rule->params(['cpf', 'wrong_value']);
     }
@@ -35,6 +37,7 @@ class DocumentNumberRuleTest extends TestCase
      */
     public function test_document_number(string $type, string $mask, string $document, bool $assert): void
     {
+        /** @var \Matmper\Rules\DocumentNumberRule $rule */
         $rule = app(\Matmper\Rules\DocumentNumberRule::class);
 
         $rule->params([$type, $mask]);
@@ -46,7 +49,7 @@ class DocumentNumberRuleTest extends TestCase
     /**
      * Data Provider: test_document_number
      *
-     * @return array
+     * @return array<string, array<mixed>>
      */
     public function testDocumentNumberDataProvider(): array
     {

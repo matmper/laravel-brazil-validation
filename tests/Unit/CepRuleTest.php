@@ -14,6 +14,7 @@ class CepRuleTest extends TestCase
     {
         $this->expectException(\Matmper\Exceptions\InvalidValidationParameterException::class);
 
+        /** @var \Matmper\Rules\CepRule $rule */
         $rule = app(\Matmper\Rules\CepRule::class);
         $rule->params(['wrong_value']);
     }
@@ -24,6 +25,7 @@ class CepRuleTest extends TestCase
      */
     public function test_document_number(string $type, string $cep, bool $assert): void
     {
+        /** @var \Matmper\Rules\CepRule $rule */
         $rule = app(\Matmper\Rules\CepRule::class);
 
         $rule->params([$type]);
@@ -35,7 +37,7 @@ class CepRuleTest extends TestCase
     /**
      * Data Provider: test_document_number
      *
-     * @return array
+     * @return array<string, array<mixed>>
      */
     public function testCepDataProvider(): array
     {
