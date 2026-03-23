@@ -13,7 +13,7 @@ class NotHtmlRuleTest extends TestCase
      * @param bool $assert
      *
      * @test
-     * @dataProvider testNotHtmlDataProvider
+     * @dataProvider notHtmlDataProvider
      */
     public function test_not_html(mixed $value, bool $assert): void
     {
@@ -29,7 +29,7 @@ class NotHtmlRuleTest extends TestCase
      *
      * @return array<string, array<mixed>>
      */
-    public function testNotHtmlDataProvider(): array
+    public static function notHtmlDataProvider(): array
     {
         return [
             'true_string' => [$value = fake()->text(100), true],
@@ -46,7 +46,7 @@ class NotHtmlRuleTest extends TestCase
      * @param int|int[] $value
      *
      * @test
-     * @dataProvider testNotHtmlExceptionDataProvider
+     * @dataProvider notHtmlExceptionDataProvider
      */
     public function test_not_html_string_exception(mixed $value): void
     {
@@ -55,8 +55,7 @@ class NotHtmlRuleTest extends TestCase
         /** @var \Matmper\Rules\NotHtmlRule $rule */
         $rule = app(\Matmper\Rules\NotHtmlRule::class);
 
-        // @phpstan-ignore-next-line argument.type
-        $rule->passes(fake()->word(), $value);
+        $rule->passes((string) fake()->word(), $value);
     }
 
     /**
@@ -64,7 +63,7 @@ class NotHtmlRuleTest extends TestCase
      *
      * @return array<string, array<mixed>>
      */
-    public function testNotHtmlExceptionDataProvider(): array
+    public static function notHtmlExceptionDataProvider(): array
     {
         return [
             'false_int' => [fake()->randomDigitNotZero()],

@@ -35,7 +35,7 @@ class DocumentNumberRuleTest extends TestCase
 
     /**
      * @test
-     * @dataProvider testDocumentNumberDataProvider
+     * @dataProvider documentNumberDataProvider
      */
     public function test_document_number(string $type, string $mask, string $document, bool $assert): void
     {
@@ -53,7 +53,7 @@ class DocumentNumberRuleTest extends TestCase
      *
      * @return array<string, array<mixed>>
      */
-    public function testDocumentNumberDataProvider(): array
+    public static function documentNumberDataProvider(): array
     {
         return [
             'cpf_cnpj_true_cpf' => ['cpf.cnpj', 'value', FakeDocumentHelper::cpf(), true],

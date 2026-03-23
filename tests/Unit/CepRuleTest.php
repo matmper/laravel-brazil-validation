@@ -23,7 +23,7 @@ class CepRuleTest extends TestCase
 
     /**
      * @test
-     * @dataProvider testCepDataProvider
+     * @dataProvider cepDataProvider
      */
     public function test_document_number(string $type, string $cep, bool $assert): void
     {
@@ -41,7 +41,7 @@ class CepRuleTest extends TestCase
      *
      * @return array<string, array<mixed>>
      */
-    public function testCepDataProvider(): array
+    public static function cepDataProvider(): array
     {
         return [
             'cep_true' => ['value', FakeCepHelper::cep(), true],

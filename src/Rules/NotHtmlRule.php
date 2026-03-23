@@ -17,8 +17,8 @@ class NotHtmlRule implements RuleContract
     /**
      * Determine if the validation rule passes.
      *
-     * @param   string  $attribute
-     * @param   string  $value
+     * @param   string $attribute
+     * @param   mixed $value
      * @return  bool
      */
     public function passes(string $attribute, mixed $value): bool

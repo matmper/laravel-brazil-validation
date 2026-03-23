@@ -11,7 +11,7 @@ class CepRuleTest extends TestCase
 {
     /**
      * @test
-     * @dataProvider testCepDataProvider
+     * @dataProvider cepDataProvider
      */
     public function testCepRequest(string $cep, int $assertStatus): void
     {
@@ -30,7 +30,7 @@ class CepRuleTest extends TestCase
      *
      * @return array<string, array<mixed>>
      */
-    public function testCepDataProvider(): array
+    public static function cepDataProvider(): array
     {
         return [
             'cep_success' => [FakeCepHelper::cep(), 200],

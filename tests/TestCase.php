@@ -7,7 +7,7 @@ namespace Tests;
 class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
-     * @var \Illuminate\Foundation\Application;
+     * @var \Illuminate\Foundation\Application
      */
     protected $app;
 
