@@ -2,7 +2,9 @@
 
 Validação dos principais tipo de documentos e seus formatos encontrados em território brasileiro.
 
-**Importante:** *a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, não é realizado verificações com banco de dados governamentais ou oficiais para garantir a existência e o uso deste documento.*
+**Importante:** *a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, não é realizado verificações com banco de dados governamentais ou oficiais para garantir a existência e o uso deste documento. Utilize com sabedoria! *
+
+**Atenção:** Suporte a CNPJ Alfanumérico (vigente desde Julho de 2026).
 
 ## CPF & CNPJ
 
@@ -53,7 +55,9 @@ $request->validate(['cnpj' => 'document:cnpj']);
 | - | Valor de entrada (Input) |
 |-|-|
 | ✔️ | 00.111.222/0001-99 |
+| ✔️ | AA.1BB.222/0001-99 |
 | ✔️ | 00111222000199 |
+| ✔️ | AA1BB222000199 |
 
 ---
 
@@ -63,3 +67,16 @@ $request->validate(['cnpj' => 'document:cnpj:mask']);
 | - | Valor de entrada (Input) |
 |-|-|
 | ✔️ | 00.111.222/0001-99 |
+| ✔️ | AA.1BB.222/0001-99 |
+
+---
+
+**Dica:** Para desabilitar a validação de CNPJ Alfanumérico, utilize o parâmetro `disable_alphanumeric`. Não possui efeito sobre validação de CPF.
+
+```php
+$request->validate(['cnpj' => 'document:cnpj:disable_alphanumeric']);
+```
+| - | Valor de entrada (Input) |
+|-|-|
+| ✔️ | 00.111.222/0001-99 |
+| ❌ | AA.1BB.222/0001-99 |

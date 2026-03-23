@@ -37,9 +37,11 @@ $ php artisan vendor:publish --provider="Matmper\Providers\ValidationProvider"
 
 | laravel-brazil-validation version | Laravel versions |
 |---|---|
-| 1.x  | 9 / 10 / 11 |
+| 1.x  | 9 / 10 / 11 / 12 / 13 |
 
 Access: [Complete Documentation](https://matmper.github.io/laravel-brazil-validation)
+
+**Attention:** Starting with version 1.1.0, this package is compatible with the new alphanumeric CNPJ standard.
 
 ## Contribution & Development
 
