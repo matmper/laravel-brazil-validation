@@ -76,7 +76,7 @@ class FakeDocumentHelper
             return MaskHelper::create($number, '##.###.###/####-##');
         }
 
-            return $number;
+        return $number;
     }
 
     /**
