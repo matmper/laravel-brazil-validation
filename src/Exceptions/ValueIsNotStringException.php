@@ -11,17 +11,16 @@ use Throwable;
 class ValueIsNotStringException extends Exception
 {
     /**
-     * @param string|null $message
+     * @param string $message
      * @param int $code
      * @param Throwable|null $previous
      */
     public function __construct(
-        string $message = null,
+        string $message = '',
         int $code = Response::HTTP_BAD_REQUEST,
-        Throwable $previous = null,
+        ?Throwable $previous = null
     ) {
-        $message = "Parameter value is not a valid string: {$message}";
-
-        parent::__construct($message, $code, $previous);
+        $msg = "Parameter value is not a valid string: {$message}";
+        parent::__construct($msg, $code, $previous);
     }
 }

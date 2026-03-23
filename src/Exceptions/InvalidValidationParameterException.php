@@ -11,17 +11,16 @@ use Throwable;
 class InvalidValidationParameterException extends Exception
 {
     /**
-     * @param string|null $message
+     * @param string $message
      * @param int $code
      * @param Throwable|null $previous
      */
     public function __construct(
-        string $message = null,
+        string $message = '',
         int $code = Response::HTTP_NOT_ACCEPTABLE,
-        Throwable $previous = null,
+        ?Throwable $previous = null
     ) {
-        $message = "Validation parameter is invalid: {$message}";
-
-        parent::__construct($message, $code, $previous);
+        $msg = "Validation parameter is invalid: {$message}";
+        parent::__construct($msg, $code, $previous);
     }
 }
