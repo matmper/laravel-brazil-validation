@@ -47,7 +47,7 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../content/">Conteúdo</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Documentos</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Documentos</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#cpf-cnpj">CPF &amp; CNPJ</a>
     </li>
@@ -82,7 +82,8 @@
               
                 <h1 id="documentos">Documentos</h1>
 <p>Validação dos principais tipo de documentos e seus formatos encontrados em território brasileiro.</p>
-<p><strong>Importante:</strong> <em>a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, não é realizado verificações com banco de dados governamentais ou oficiais para garantir a existência e o uso deste documento.</em></p>
+<p><strong>Importante:</strong> *a validação de documentos é feita de forma matemática, impedindo o uso de valores aleatórios, não é realizado verificações com banco de dados governamentais ou oficiais para garantir a existência e o uso deste documento. Utilize com sabedoria! *</p>
+<p><strong>Atenção:</strong> Suporte a CNPJ Alfanumérico (vigente desde Julho de 2026).</p>
 <h2 id="cpf-cnpj">CPF &amp; CNPJ</h2>
 <table>
 <thead>
@@ -200,7 +201,15 @@ $request-&gt;validate(['document_number' =&gt; 'document:cpf.cnpj']);
 </tr>
 <tr>
 <td>✔️</td>
+<td>AA.1BB.222/0001-99</td>
+</tr>
+<tr>
+<td>✔️</td>
 <td>00111222000199</td>
+</tr>
+<tr>
+<td>✔️</td>
+<td>AA1BB222000199</td>
 </tr>
 </tbody>
 </table>
@@ -218,6 +227,32 @@ $request-&gt;validate(['document_number' =&gt; 'document:cpf.cnpj']);
 <tr>
 <td>✔️</td>
 <td>00.111.222/0001-99</td>
+</tr>
+<tr>
+<td>✔️</td>
+<td>AA.1BB.222/0001-99</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Dica:</strong> Para desabilitar a validação de CNPJ Alfanumérico, utilize o parâmetro <code>disable_alphanumeric</code>. Não possui efeito sobre validação de CPF.</p>
+<pre><code class="language-php">$request-&gt;validate(['cnpj' =&gt; 'document:cnpj:disable_alphanumeric']);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Valor de entrada (Input)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✔️</td>
+<td>00.111.222/0001-99</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>AA.1BB.222/0001-99</td>
 </tr>
 </tbody>
 </table>
