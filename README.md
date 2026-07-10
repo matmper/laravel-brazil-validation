@@ -17,8 +17,8 @@ Composer package for request brazilian field validation for Laravel
 
 # Dependences
 
-- PHP >= 8.2.2 ([Doc](https://www.php.net/releases/8.0/pt_BR.php))
-- Laravel >= 11 ([Doc](https://laravel.com/docs/9.x/releases))
+- PHP >= 8.2.2 ([Doc](https://www.php.net/releases/8.2/pt_BR.php))
+- Laravel >= 11 ([Doc](https://laravel.com/docs/11.x/releases))
 - Composer ([Doc](https://getcomposer.org/))
 
 # Install

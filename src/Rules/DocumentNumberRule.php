@@ -96,11 +96,8 @@ class DocumentNumberRule implements RuleContract
     /**
      * Validate and set validation parameters
      *
-     * @param array $params
+     * @param array<string> $params
      * @return void
-     */
-    /**
-     * @param array<int, string> $params
      */
     private function setParams(array $params): void
     {
