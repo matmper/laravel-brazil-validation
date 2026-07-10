@@ -78,4 +78,26 @@ class FakeDocumentHelper
 
         return $number;
     }
+
+    /**
+     * Generate a fake CNPJ document number
+     * @param boolean $mask
+     * @return string
+     */
+    public static function cnpjAlphanumeric(bool $mask = false): string
+    {
+        $numbers = [
+            'VFRBMGVsZEVWVFZOYWxWM1RVUkJlRTlVUVQwPQ==',
+            'VFRBMGVsZEVWVFZOYWxaVVRqQldTRTU2VVQwPQ==',
+            'VkZSbk0xZFdUWHBTVkZWM1RVUkJlRTVVVVQwPQ==',
+        ];
+
+        $number = base64_decode(base64_decode(base64_decode($numbers[array_rand($numbers)])));
+
+        if ($mask === true) {
+            return MaskHelper::create($number, '##.###.###/####-##');
+        }
+
+        return $number;
+    }
 }

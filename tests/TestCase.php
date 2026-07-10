@@ -1,11 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
-     * @var \Illuminate\Foundation\Application;
+     * @var \Illuminate\Foundation\Application
      */
     protected $app;
 

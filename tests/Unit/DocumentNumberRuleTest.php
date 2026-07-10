@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit;
 
@@ -33,7 +35,7 @@ class DocumentNumberRuleTest extends TestCase
 
     /**
      * @test
-     * @dataProvider testDocumentNumberDataProvider
+     * @dataProvider documentNumberDataProvider
      */
     public function test_document_number(string $type, string $mask, string $document, bool $assert): void
     {
@@ -51,7 +53,7 @@ class DocumentNumberRuleTest extends TestCase
      *
      * @return array<string, array<mixed>>
      */
-    public function testDocumentNumberDataProvider(): array
+    public static function documentNumberDataProvider(): array
     {
         return [
             'cpf_cnpj_true_cpf' => ['cpf.cnpj', 'value', FakeDocumentHelper::cpf(), true],
@@ -67,6 +69,32 @@ class DocumentNumberRuleTest extends TestCase
             'cnpj_true_mask' => ['cnpj', 'mask', FakeDocumentHelper::cnpj(true), true],
             'cnpj_false_mask' => ['cnpj', 'mask', FakeDocumentHelper::cnpj(), false],
             'cnpj_false' => ['cnpj', 'value', '00000000000000', false],
+
+
+            'cnpj_alphanumeric_true' => [
+                'cnpj',
+                'value',
+                FakeDocumentHelper::cnpjAlphanumeric(),
+                true
+            ],
+            'cnpj_alphanumeric_true_mask' => [
+                'cnpj',
+                'mask',
+                FakeDocumentHelper::cnpjAlphanumeric(true),
+                true
+            ],
+            'cnpj_alphanumeric_false_mask' => [
+                'cnpj',
+                'mask',
+                FakeDocumentHelper::cnpjAlphanumeric(),
+                false
+            ],
+            'cnpj_alphanumeric_false' => [
+                'cnpj',
+                'value',
+                '00AAAAA0000100',
+                false
+            ],
         ];
     }
 }

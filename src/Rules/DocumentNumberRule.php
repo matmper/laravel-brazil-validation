@@ -8,18 +8,25 @@ use Matmper\Enums\DocumentType;
 class DocumentNumberRule implements RuleContract
 {
     /**
-     * Set true if check mask and value
-     *
-     * @var bool
-     */
-    private $checkMask;
-
-    /**
      * List to documents to validate
      *
      * @var array<string>
      */
-    private $documents;
+    private $documents = [];
+
+    /**
+     * Set true if check mask and value
+     *
+     * @var bool
+     */
+    private $checkMask = false;
+
+    /**
+     * Force validate only numbers in document value
+     *
+     * @var bool
+     */
+    private $disableAlphanumeric = false;
 
     /**
      * @inheritDoc
@@ -27,7 +34,7 @@ class DocumentNumberRule implements RuleContract
     public function params(array $params): self
     {
         $this->setDocuments($params[0] ?? 'cpf.cnpj');
-        $this->setMask($params[1] ?? 'value');
+        $this->setParams($params);
 
         return $this;
     }
@@ -41,15 +48,18 @@ class DocumentNumberRule implements RuleContract
      */
     public function passes(string $attribute, mixed $value): bool
     {
-        $cpfRule = new \Matmper\Services\DocumentCpfService;
+        $cpfRule = new \Matmper\Services\DocumentCpfService();
 
         if (in_array(DocumentType::CPF, $this->documents) && $cpfRule->passes($value, $this->checkMask)) {
             return true;
         }
 
-        $cnpjRule = new \Matmper\Services\DocumentCnpjService;
+        $cnpjRule = new \Matmper\Services\DocumentCnpjService();
 
-        if (in_array(DocumentType::CNPJ, $this->documents) && $cnpjRule->passes($value, $this->checkMask)) {
+        if (
+            in_array(DocumentType::CNPJ, $this->documents)
+            && $cnpjRule->passes($value, $this->checkMask, $this->disableAlphanumeric)
+        ) {
             return true;
         }
 
@@ -84,17 +94,39 @@ class DocumentNumberRule implements RuleContract
     }
 
     /**
-     * Validate type and set $this->setMask
+     * Validate and set validation parameters
      *
-     * @param string $type
+     * @param array<string> $params
      * @return void
      */
-    private function setMask(string $type): void
+    private function setParams(array $params): void
     {
-        if (!in_array($type, ['value', 'mask'])) {
-            throw new \Matmper\Exceptions\InvalidValidationParameterException($type);
-        }
+        $params = array_filter($params, function ($param, $key) {
+            return $key > 0;
+        }, ARRAY_FILTER_USE_BOTH);
 
-        $this->checkMask = $type === 'mask';
+        foreach ($params as $param) {
+            match ($param) {
+                'disable_alphanumeric' => $this->disableAlphanumericTrue(),
+                'mask' => $this->setCheckMaskTrue(),
+                'value' => $this->setCheckMaskFalse(),
+                default => throw new \Matmper\Exceptions\InvalidValidationParameterException($param),
+            };
+        }
+    }
+
+    private function disableAlphanumericTrue(): void
+    {
+        $this->disableAlphanumeric = true;
+    }
+
+    private function setCheckMaskTrue(): void
+    {
+        $this->checkMask = true;
+    }
+
+    private function setCheckMaskFalse(): void
+    {
+        $this->checkMask = false;
     }
 }

@@ -3,6 +3,7 @@
 /**
  * Used for overwrite \Illuminate\Contracts\Validation\Rule;
  */
+
 namespace Matmper\Contracts;
 
 interface RuleContract
